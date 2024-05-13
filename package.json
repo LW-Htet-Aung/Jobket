@@ -2,11 +2,13 @@
   "name": "jobket",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "node data/seed.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
