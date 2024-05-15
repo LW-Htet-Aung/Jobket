@@ -2,6 +2,9 @@ import { filterJobs, getDistinctLocation } from "@/database/action/job"
 import { Label } from "./ui/label"
 import { Input } from "./ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
+import { Checkbox } from "./ui/checkbox"
+import { Button } from "./ui/button"
+import { jobTypes } from "@/lib/job-types"
 
 interface Props { }
 const JobFilterSidebar = async (props: Props) => {
@@ -16,26 +19,40 @@ const JobFilterSidebar = async (props: Props) => {
                         <Input id='q' name='q' placeholder="Title, Company, etc" />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <Label htmlFor="location">Location</Label>
-                        <Select defaultValue="">
-                            <SelectTrigger className="w-[180px]">
-                                <SelectValue placeholder="All Location" />
+                        <Label htmlFor="location"> Type</Label>
+                        <Select name='type' defaultValue="all">
+                            <SelectTrigger className="">
+                                <SelectValue placeholder="All Type" />
                             </SelectTrigger>
                             <SelectContent>
-                                {/* {distinctLocation.map((location, i) => (
-                                    <SelectItem key={i} value={location}>All Location</SelectItem>
-
-                                ))} */}
-
-                                {/* <SelectItem value="dark">Dark</SelectItem>
-                                <SelectItem value="system">System</SelectItem> */}
+                                {['all', ...jobTypes].map((type, i) => (
+                                    <SelectItem key={i} value={type}>{type === 'all' ? "All Type" : type}</SelectItem>
+                                ))}
                             </SelectContent>
                         </Select>
 
                     </div>
+                    <div className="flex flex-col gap-2">
+                        <Label htmlFor="location">Location</Label>
+                        <Select name='location' defaultValue="all">
+                            <SelectTrigger className="">
+                                <SelectValue placeholder="All Location" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {distinctLocation.map((location, i) => (
+                                    <SelectItem key={i} value={location}>{location === 'all' ? "All Location" : location}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Checkbox name="remote" id='remote' />
+                        <Label htmlFor="remote" >Remote Jobs</Label>
+                    </div>
+                    <Button type='submit' className="w-full">Filter Jobs</Button>
                 </div>
             </form>
-            Sidebar
         </aside>
     )
 }

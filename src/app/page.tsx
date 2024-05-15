@@ -4,10 +4,11 @@ import { getApprovedJobs } from "@/database/action/job";
 
 export default async function Home() {
   const jobs = await getApprovedJobs()
+  throw new Error('error')
   return (
-    <main className="max-w-5xl mx-auto px-3 my-10 space-y-100">
-      <div className="space-y-5 text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+    <main className="main">
+      <div className="space-y-5 mb-4 text-center">
+        <h1 className="header-1">
           Developer Jobs
         </h1>
         <p className="text-muted-foreground">Find Your Dream Job</p>
