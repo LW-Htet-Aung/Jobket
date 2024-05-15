@@ -76,4 +76,13 @@
   .default-transition {
     @apply transition-all duration-300 ease-linear;
   }
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .main {
+    @apply max-w-5xl mx-auto px-3 my-10 space-y-10;
+  }
+  .header-1 {
+    @apply text-4xl font-extrabold tracking-tight lg:text-5xl;
+  }
 }
